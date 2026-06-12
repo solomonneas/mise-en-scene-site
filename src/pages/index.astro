@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Ardoise from '../components/Ardoise.astro';
+import { SITE, EXTERNAL } from '../lib/site.ts';
+
+const STEPS = [
+  { title: 'Paste the source', desc: 'A repo, an OpenAPI spec, a README, an incident report, a transcript, or architecture notes. The scene starts from what you actually have.' },
+  { title: 'Extract the cast', desc: 'Systems, actors, flows, terms, and source-grounded facts get pulled out into a scene model you can edit.' },
+  { title: 'Stage the scene', desc: 'An editable HTML/SVG scene with audience-mode chips and click targets. Switch the mode and the same diagram re-narrates for engineers, operators, or execs.' },
+  { title: 'Export the artifact', desc: 'One standalone HTML file, no server, no dependencies. Send it in a Slack thread, attach it to the postmortem, embed it in the wiki.' },
+];
+
+const SCENE_FACTS = [
+  { title: 'Audience modes', desc: 'Mode chips re-narrate the same scene for different readers. The diagram does not change, the story it tells does.' },
+  { title: 'Source-grounded facts', desc: 'Every node carries facts extracted from the source material, so the explainer stays an artifact of the system, not an artist’s impression.' },
+  { title: 'Click targets', desc: 'Nodes and edges are clickable. The reader explores instead of squinting at a static PNG.' },
+  { title: 'Single-source rendering', desc: 'The standalone export renders the exact same SceneSvg component as the live studio, via renderToStaticMarkup. What you previewed is what they get.' },
+];
+
+const NOT_YET = [
+  'screenshot and recorded-walkthrough export targets',
+  'real ingestion beyond the local text heuristics',
+];
+---
+<BaseLayout>
+  <main>
+    <header class="hero relative overflow-hidden">
+      <div class="hero-glow absolute inset-0" aria-hidden="true"></div>
+      <div class="relative px-6 md:px-10 py-20 max-w-3xl mx-auto text-center">
+        <p class="kicker">[ L'ARDOISE &middot; {SITE.version} ]</p>
+        <h1 class="font-display text-5xl md:text-6xl leading-[1.04] mt-3">
+          Your system, <span style="color: var(--accent);">explained on the board.</span>
+        </h1>
+        <p class="text-lg mt-4 max-w-xl mx-auto" style="color: var(--text-muted);">
+          Mise en Scene turns repos, specs, incident reports, and architecture notes into
+          self-contained interactive HTML/SVG explainers: audience modes, source-grounded facts,
+          click-through scenes, and an export that always matches what you previewed.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-7 items-center justify-center">
+          <a href={EXTERNAL.studio} class="text-sm font-semibold px-4 py-2 rounded-md" style="background: var(--accent); color: var(--on-accent);">Open the studio &rarr;</a>
+          <a href={EXTERNAL.github} class="text-sm font-semibold px-4 py-2 rounded-md border" style="border-color: var(--hairline); background: var(--bg-panel);">View on GitHub</a>
+        </div>
+        <p class="text-sm mt-2" style="color: var(--text-dim);">{SITE.subtitle}</p>
+        <div class="mt-12 flex justify-center">
+          <Ardoise />
+        </div>
+      </div>
+    </header>
+
+    <section id="how-it-works" class="px-6 md:px-10 py-14 max-w-6xl mx-auto">
+      <div class="section-rule mb-8"><span class="kicker">[ 01 &middot; HOW IT WORKS ]</span></div>
+      <div class="card-grid">
+        {STEPS.map((s, i) => (
+          <div class="shelf-card">
+            <h3><span class="font-mono" style="color: var(--accent);">{String(i + 1).padStart(2, '0')}</span> {s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="the-scene" class="px-6 md:px-10 py-14 max-w-6xl mx-auto">
+      <div class="section-rule mb-8"><span class="kicker">[ 02 &middot; THE SCENE ]</span></div>
+      <div class="card-grid">
+        {SCENE_FACTS.map((f) => (
+          <div class="shelf-card">
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="status" class="px-6 md:px-10 py-14 max-w-4xl mx-auto">
+      <div class="section-rule mb-8"><span class="kicker">[ 03 &middot; STATUS ]</span></div>
+      <div class="max-w-2xl">
+        <p class="mb-4" style="color: var(--text-muted);">
+          Mise en Scene is an early working spike, shared in the open because the single-source
+          rendering idea is already useful. The studio runs, scenes render, exports work. Honest
+          about what is not built yet:
+        </p>
+        <ul class="m-0 p-0" style="list-style: none;">
+          {NOT_YET.map((n) => (
+            <li class="flex items-start gap-3 py-2 border-t text-sm" style="border-color: var(--hairline); color: var(--text-muted);">
+              <span class="font-mono" style="color: var(--accent);">not yet</span><span>{n}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-5 text-sm" style="color: var(--text-muted);">
+          Run it locally with <code class="font-mono" style="color: var(--accent);">npm install &amp;&amp; npm run dev</code>,
+          or use the hosted <a href={EXTERNAL.studio} style="color: var(--accent);">studio</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .hero-glow {
+    background: radial-gradient(ellipse 50% 55% at 50% 28%, color-mix(in srgb, var(--accent) 7%, transparent) 0%, transparent 70%);
+  }
+</style>

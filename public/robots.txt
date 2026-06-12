@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mise-en-scene.escoffierlabs.dev/sitemap.xml

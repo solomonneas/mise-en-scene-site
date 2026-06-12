@@ -1,0 +1,135 @@
+---
+---
+<figure class="ardoise-scene" aria-label="A sidewalk chalkboard showing a small chalk-drawn system diagram with audience mode chips">
+  <div class="aframe">
+    <span class="aframe-leg left" aria-hidden="true"></span>
+    <span class="aframe-leg right" aria-hidden="true"></span>
+    <div class="board">
+      <p class="board-title">~ today's scene ~</p>
+      <div class="chips" aria-hidden="true">
+        <span class="chip active">engineer</span>
+        <span class="chip">operator</span>
+        <span class="chip">exec</span>
+      </div>
+      <svg class="chalk-diagram" viewBox="0 0 240 110" aria-hidden="true">
+        <g fill="none" stroke="#d8d4c6" stroke-width="1.5" opacity="0.9">
+          <rect x="8" y="14" width="62" height="26" rx="5" />
+          <rect x="158" y="14" width="74" height="26" rx="5" />
+          <rect x="84" y="70" width="74" height="26" rx="5" />
+          <path d="M70 27 L156 27" stroke-dasharray="5 4" />
+          <path d="M150 24 L157 27 L150 30" />
+          <path d="M195 41 C195 58 140 56 128 68" stroke-dasharray="5 4" />
+          <path d="M127 60 L127.5 69 L135 66" />
+        </g>
+        <g font-family="Caveat, cursive" font-size="13" fill="#e9e6da">
+          <text x="39" y="31" text-anchor="middle">gateway</text>
+          <text x="195" y="31" text-anchor="middle">ingest queue</text>
+          <text x="121" y="87" text-anchor="middle">evidence db</text>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="7" fill="#9aa48f">
+          <text x="113" y="20" text-anchor="middle">sealed diffs</text>
+          <text x="188" y="62" text-anchor="middle">writes</text>
+        </g>
+      </svg>
+      <p class="board-foot font-mono">click any node for the source-grounded facts</p>
+    </div>
+  </div>
+  <figcaption class="ardoise-cap font-mono">l'ardoise &middot; the chalkboard out front, drawn from your actual sources</figcaption>
+</figure>
+
+<style>
+  .ardoise-scene {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+  }
+  .aframe {
+    position: relative;
+    padding-bottom: 1.6rem;
+  }
+  /* Wooden A-frame legs peeking out below the board. */
+  .aframe-leg {
+    position: absolute;
+    bottom: 0;
+    width: 0.85rem;
+    height: 3.4rem;
+    background: linear-gradient(to right, #7a5c3a, #5c4429 60%, #6b4f31);
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+  }
+  .aframe-leg.left { left: 1.2rem; transform: rotate(4deg); }
+  .aframe-leg.right { right: 1.2rem; transform: rotate(-4deg); }
+  /* The chalk panel, framed in wood. */
+  .board {
+    position: relative;
+    width: min(21rem, 86vw);
+    background:
+      radial-gradient(ellipse at 22% 18%, rgba(255, 255, 255, 0.05), transparent 55%),
+      radial-gradient(ellipse at 80% 85%, rgba(255, 255, 255, 0.03), transparent 50%),
+      #20262a;
+    border: 7px solid #6b4f31;
+    border-image: linear-gradient(160deg, #7a5c3a, #573f25 55%, #6b4f31) 1;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 0 0 1px #343d44;
+    padding: 1rem 1.1rem 0.9rem;
+    transform: rotate(-0.8deg);
+    transition: transform 0.25s ease;
+  }
+  .board:hover { transform: rotate(0deg); }
+  @media (prefers-reduced-motion: reduce) {
+    .board, .board:hover { transition: none; transform: rotate(-0.8deg); }
+  }
+  [data-theme='light'] .board {
+    box-shadow: 0 12px 26px rgba(60, 50, 30, 0.3), inset 0 0 0 1px #343d44;
+  }
+  .board-title {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #e9e6da;
+    text-shadow: 0 0 3px rgba(233, 230, 218, 0.35);
+    margin: 0 0 0.5rem;
+  }
+  .chips {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+  .chip {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9aa48f;
+    border: 1px dashed rgba(216, 212, 198, 0.4);
+    border-radius: 99px;
+    padding: 0.1rem 0.5rem;
+  }
+  .chip.active {
+    color: #e0a45c;
+    border-color: rgba(224, 164, 92, 0.6);
+    border-style: solid;
+    text-shadow: 0 0 3px rgba(224, 164, 92, 0.4);
+  }
+  .chalk-diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .board-foot {
+    margin: 0.3rem 0 0;
+    text-align: center;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    color: #9aa48f;
+  }
+  .ardoise-cap {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+</style>

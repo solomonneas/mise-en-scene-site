@@ -8,7 +8,7 @@ export const SITE = {
   metaDescription:
     'Turn repos, specs, incident reports, and architecture notes into self-contained interactive HTML/SVG explainers with audience modes and source-grounded facts.',
   url: 'https://mise-en-scene.escoffierlabs.dev',
-  image: '/og-mise-en-scene.png',
+  image: '/og-card.png',
   install: 'git clone https://github.com/escoffier-labs/mise-en-scene',
   version: 'early spike',
 };

@@ -4,5 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://mise-en-scene.escoffierlabs.dev',
   output: 'static',
+  trailingSlash: 'never',
   vite: { plugins: [tailwindcss()] },
 });

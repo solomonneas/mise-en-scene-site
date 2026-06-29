@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Ardoise from '../components/Ardoise.astro';
+import FleetLinks from '../components/FleetLinks.astro';
 import { SITE, EXTERNAL } from '../lib/site.ts';
 
 const STEPS = [
@@ -92,6 +93,8 @@ const NOT_YET = [
         </p>
       </div>
     </section>
+
+    <FleetLinks current="mise-en-scene-site" />
   </main>
 </BaseLayout>
 

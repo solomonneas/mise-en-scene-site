@@ -101,6 +101,15 @@ Ink-stamp colors (used on paper only, never on the ledger):
   row, a red top rule (`rgba(186,74,56,.55)` double line), faint blue rule
   lines every 22px matched to an 11px/22px mono `pre`.
 
+## Scrollbars
+
+Never ship stock browser scrollbars. Every site sets themed thin scrollbars
+globally in global.css: `* { scrollbar-width: thin; scrollbar-color:
+var(--hairline-strong) transparent; }` plus the `::-webkit-scrollbar` set
+(8px wide / 6px tall, transparent track, hairline-strong thumb at 4px radius,
+`--text-dim` thumb on hover, transparent corner). Sites without
+`--hairline-strong` use their strongest hairline or border token.
+
 ## Motion rules
 
 - CSS-only. One subtle idle animation per page maximum (the flow pulse).

@@ -22,6 +22,10 @@ export const NAV_LINKS = [
 
 export const EXTERNAL = {
   github: 'https://github.com/escoffier-labs/mise-en-scene',
+  stargazers: 'https://github.com/escoffier-labs/mise-en-scene/stargazers',
+  // Live shadcn-styled GitHub stars badge (shieldcn.dev). Two modes, swapped to match the theme toggle.
+  starsBadgeDark: 'https://shieldcn.dev/github/stars/escoffier-labs/mise-en-scene.svg?variant=secondary&mode=dark',
+  starsBadgeLight: 'https://shieldcn.dev/github/stars/escoffier-labs/mise-en-scene.svg?variant=secondary&mode=light',
   studio: 'https://app.mise-en-scene.escoffierlabs.dev',
   brigade: 'https://brigade.tools',
   cookbook: 'https://escoffierlabs.dev/cookbook',
